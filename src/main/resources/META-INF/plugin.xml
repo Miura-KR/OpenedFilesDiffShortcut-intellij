@@ -21,7 +21,7 @@
         <action id="com.k.pmpstudy.OpenedFilesDiffAction" class="com.k.pmpstudy.OpenedFilesDiffAction"
                 text="Show Opened Files Diff">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt D" second-keystroke="F"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt D"/>
         </action>
     </actions>
 </idea-plugin>
