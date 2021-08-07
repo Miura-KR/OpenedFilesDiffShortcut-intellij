@@ -4,7 +4,7 @@
     <name>Opened Files Diff Shortcut</name>
 
     <description><![CDATA[
-    The Action showing difference of files opened in split window.
+    The Action showing difference between the files opened in split window.
     ]]></description>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 

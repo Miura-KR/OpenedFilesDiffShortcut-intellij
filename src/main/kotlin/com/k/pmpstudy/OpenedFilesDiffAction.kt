@@ -46,6 +46,7 @@ class OpenedFilesDiffAction : AnAction() {
     }
 
     private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
+        if (files.size <= 1) return
         if (files[0] == files[1]) {
             Messages.showMessageDialog(
                 "Same files are opened", ACTION_ERROR_MESSAGE_TITLE, Messages.getInformationIcon()
