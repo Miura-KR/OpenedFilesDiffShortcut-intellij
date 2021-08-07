@@ -1,11 +1,12 @@
 <idea-plugin>
     <id>com.k.pmpstudy.OpenedFilesDiffShortcut</id>
+    <version>1.0</version>
     <name>Opened Files Diff Shortcut</name>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    The Action showing difference of files opened in split window.
     ]]></description>
+    <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
