@@ -33,12 +33,13 @@ class OpenedFilesDiffAction : AnAction() {
         } else if (windows.size == 1) {
             showDiffFirst2Files(e.project!!, windows[0].files)
         } else {
-            val selectedFileList: Array<VirtualFile> =
-                windows.map { it.selectedFile }.take(2).toTypedArray()
+            var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.toTypedArray()
 
-            val filesToCompare: Array<VirtualFile> = showMultipleFilesChooseDialog(selectedFileList)
+            if (selectedFileList.size != 2) {
+                selectedFileList = showMultipleFilesChooseDialog(selectedFileList)
+            }
 
-            showDiffFirst2Files(e.project!!, filesToCompare)
+            showDiffFirst2Files(e.project!!, selectedFileList)
         }
     }
 
@@ -47,9 +48,12 @@ class OpenedFilesDiffAction : AnAction() {
                 || (windows.size == 1 && windows[0].files.size <= 1)
     }
 
-    private fun showMultipleFilesChooseDialog(files: Array<VirtualFile>) : Array<VirtualFile> {
-        SampleDialogWrapper().showAndGet()
-        return files
+    private fun showMultipleFilesChooseDialog(files: Array<VirtualFile>): Array<VirtualFile> {
+        val fileSelector = FileSelectDialog(files)
+        if (fileSelector.showAndGet()) {
+            return files.filter { fileSelector.checkBoxList.isItemSelected(it) }.toTypedArray()
+        }
+        throw RuntimeException("Exit Error has occurred.")
     }
 
     private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
