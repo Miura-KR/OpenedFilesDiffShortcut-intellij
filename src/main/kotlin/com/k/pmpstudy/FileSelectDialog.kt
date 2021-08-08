@@ -13,7 +13,7 @@ import javax.swing.JPanel
 
 class FileSelectDialog(files: Array<VirtualFile>) : DialogWrapper(true) {
     private val files: Array<VirtualFile>
-    val checkBoxList = CheckBoxList<VirtualFile>()
+    private val checkBoxList = CheckBoxList<VirtualFile>()
 
     init {
         title = "Opened Files Diff"
@@ -30,16 +30,22 @@ class FileSelectDialog(files: Array<VirtualFile>) : DialogWrapper(true) {
         val label = JLabel("Select 2 files to compare.")
         label.preferredSize = Dimension(100, 50)
         dialogPanel.add(label, BorderLayout.NORTH)
-
         dialogPanel.add(checkBoxList, BorderLayout.CENTER)
 
         return dialogPanel
+    }
+
+    fun showChoose2FilesDialog(): Array<VirtualFile> {
+        if (showAndGet()) {
+            return files.filter { checkBoxList.isItemSelected(it) }.toTypedArray()
+        }
+        throw RuntimeException("Exit Error has occurred.")
     }
 
     override fun doValidate(): ValidationInfo? {
         if (files.count { checkBoxList.isItemSelected(it) } == 2) {
             return null
         }
-        return ValidationInfo("Select just 2 files.").asWarning()
+        return ValidationInfo("Select just 2 files.", checkBoxList).asWarning()
     }
 }
