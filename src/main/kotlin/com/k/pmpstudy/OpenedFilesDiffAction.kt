@@ -36,13 +36,20 @@ class OpenedFilesDiffAction : AnAction() {
             val selectedFileList: Array<VirtualFile> =
                 windows.map { it.selectedFile }.take(2).toTypedArray()
 
-            showDiffFirst2Files(e.project!!, selectedFileList)
+            val filesToCompare: Array<VirtualFile> = showMultipleFilesChooseDialog(selectedFileList)
+
+            showDiffFirst2Files(e.project!!, filesToCompare)
         }
     }
 
     private fun isOpenedAtMost1File(windows: Array<EditorWindow>): Boolean {
         return windows.isEmpty()
                 || (windows.size == 1 && windows[0].files.size <= 1)
+    }
+
+    private fun showMultipleFilesChooseDialog(files: Array<VirtualFile>) : Array<VirtualFile> {
+        SampleDialogWrapper().showAndGet()
+        return files
     }
 
     private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
@@ -54,8 +61,7 @@ class OpenedFilesDiffAction : AnAction() {
             return
         }
 
-        val contentList: Array<DiffContent> =
-            files.map { DiffContentFactory.getInstance().create(project, it) }.toTypedArray()
+        val contentList: List<DiffContent> = files.map { DiffContentFactory.getInstance().create(project, it) }
 
         val request = SimpleDiffRequest(
             "Opened Files Diff",

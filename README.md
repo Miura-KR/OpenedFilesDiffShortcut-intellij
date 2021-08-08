@@ -1,6 +1,6 @@
 # OpenedFilesDiffShortcut-intellij
 
-The Action showing difference between the files opened in split windows.
+The Action showing differences between the files opened in split windows.
 
 Execute from `Tools > Show Opened Files Diff`.
 
