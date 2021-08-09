@@ -30,17 +30,18 @@ class OpenedFilesDiffAction : AnAction() {
             Messages.showMessageDialog(
                 "Please open at least 2 files.", ACTION_ERROR_MESSAGE_TITLE, Messages.getInformationIcon()
             )
-        } else if (windows.size == 1) {
-            showDiffFirst2Files(e.project!!, windows[0].files)
-        } else {
-            var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.toTypedArray()
-
-            if (selectedFileList.size != 2) {
-                selectedFileList = FileSelectDialog(selectedFileList).showChoose2FilesDialog()
-            }
-
-            showDiffFirst2Files(e.project!!, selectedFileList)
+            return
         }
+        if (windows.size == 1) {
+            showDiffFirst2Files(e.project!!, windows[0].files)
+            return
+        }
+
+        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.toTypedArray()
+        if (selectedFileList.size != 2) {
+            selectedFileList = FileSelectDialog(selectedFileList).showChoose2FilesDialog()
+        }
+        showDiffFirst2Files(e.project!!, selectedFileList)
     }
 
     private fun isOpenedAtMost1File(windows: Array<EditorWindow>): Boolean {
