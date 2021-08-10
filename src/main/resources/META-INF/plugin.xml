@@ -1,17 +1,51 @@
 <idea-plugin>
     <id>com.k.pmpstudy.OpenedFilesDiffShortcut</id>
-    <version>2.0.1</version>
+    <version>1.0.2</version>
     <name>Opened Files Diff Shortcut</name>
 
     <description><![CDATA[
-    The Action showing difference between the files opened in split window.
+    The Action showing difference between the files opened in split windows.<br>
+Run this action from <code>Tools &gt; Show Opened Files Diff</code>.<br>
+Work at following conditions. <br>
+
+<ul>
+<li>Case1 : Editor is not split, and at least 2 tabs are opened.
+<ul><li>Show differences between the first 2 files.</li></ul>
+</li>
+<li>Case2 : Two split windows are opened.
+<ul><li>Show differences between the files being displayed on each split windows.</li></ul>
+</li>
+<li>Case3 : At least 3 split windows are opened.
+<ul><li>Select 2 files from the files being displayed on each split windows, then show differences of it.</li></ul>
+</li>
+</ul>
+
+<br>
+<hr>
+
+開いている2つのファイルの差分表示をするアクションを追加するIntelliJプラグインです。<br>
+
+<code>Tools &gt; Show Opened Files Diff</code> から実行できます。<br>
+
+以下のような条件で所定の動作をします。<br>
+
+<ul>
+<li>エディターの画面分割をしておらず、タブに2つ以上のファイルを開いている場合
+<ul><li>先頭の2ファイルの差分表示する。</li></ul>
+</li>
+<li>エディターを2画面分割している場合
+<ul><li>2画面それぞれで表示中のファイルの差分表示をする。</li></ul>
+</li>
+<li>エディターを3画面以上に分割している場合
+<ul><li>各画面それぞれで表示中のファイルから2つ選択して差分表示をする。</li></ul>
+</li>
+</ul>
     ]]></description>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <change-notes><![CDATA[
-      Initial release.<br>
-    ]]>
-    </change-notes>
+    Remove default shortcut key.
+    ]]></change-notes>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -26,7 +60,6 @@
         <action id="com.k.pmpstudy.OpenedFilesDiffAction" class="com.k.pmpstudy.OpenedFilesDiffAction"
                 text="Show Opened Files Diff">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt D"/>
         </action>
     </actions>
 </idea-plugin>

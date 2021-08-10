@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.k.pmpstudy'
-version '2.0.1-SNAPSHOT'
+version '1.0.2'
 
 repositories {
     mavenCentral()
@@ -22,11 +22,10 @@ dependencies {
 intellij {
     version = '2021.2'
 }
-patchPluginXml {
-    changeNotes = """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
-}
+//patchPluginXml {
+//    changeNotes = """
+//      Initial release."""
+//}
 test {
     useJUnitPlatform()
 }
