@@ -37,7 +37,7 @@ class FileSelectDialog(private val files: Array<VirtualFile>) : DialogWrapper(tr
         if (showAndGet()) {
             return files.filter { checkBoxList.isItemSelected(it) }.toTypedArray()
         }
-        throw RuntimeException("Exit Error has occurred.")
+        return emptyArray()
     }
 
     override fun doValidate(): ValidationInfo? {
