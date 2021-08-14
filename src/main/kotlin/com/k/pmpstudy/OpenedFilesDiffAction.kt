@@ -44,10 +44,9 @@ class OpenedFilesDiffAction : AnAction() {
         showDiffFirst2Files(e.project!!, selectedFileList)
     }
 
-    private fun isOpenedAtMost1File(windows: Array<EditorWindow>): Boolean {
-        return windows.isEmpty()
+    private fun isOpenedAtMost1File(windows: Array<EditorWindow>): Boolean =
+        windows.isEmpty()
                 || (windows.size == 1 && windows[0].files.size <= 1)
-    }
 
     private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
         if (files.size <= 1) return

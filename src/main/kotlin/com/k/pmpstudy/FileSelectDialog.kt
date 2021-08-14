@@ -33,17 +33,11 @@ class FileSelectDialog(private val files: Array<VirtualFile>) : DialogWrapper(tr
         return dialogPanel
     }
 
-    fun showChoose2FilesDialog(): Array<VirtualFile> {
-        if (showAndGet()) {
-            return files.filter { checkBoxList.isItemSelected(it) }.toTypedArray()
-        }
-        return emptyArray()
-    }
+    fun showChoose2FilesDialog(): Array<VirtualFile> =
+        if (showAndGet()) files.filter { checkBoxList.isItemSelected(it) }.toTypedArray()
+        else emptyArray()
 
-    override fun doValidate(): ValidationInfo? {
-        if (files.count { checkBoxList.isItemSelected(it) } == 2) {
-            return null
-        }
-        return ValidationInfo("Select just 2 files.", checkBoxList).asWarning()
-    }
+    override fun doValidate(): ValidationInfo? =
+        if (files.count { checkBoxList.isItemSelected(it) } == 2) null
+        else ValidationInfo("Select just 2 files.", checkBoxList).asWarning()
 }
