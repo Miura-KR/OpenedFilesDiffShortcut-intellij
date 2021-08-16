@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.k.pmpstudy.OpenedFilesDiffShortcut</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>Opened Files Diff Shortcut</name>
 
     <description><![CDATA[
@@ -44,7 +44,7 @@ Work at following conditions. <br>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <change-notes><![CDATA[
-    Bug Fix. Changed so that no error is generated when the cancel button is pressed.
+    minor refactoring
     ]]></change-notes>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
