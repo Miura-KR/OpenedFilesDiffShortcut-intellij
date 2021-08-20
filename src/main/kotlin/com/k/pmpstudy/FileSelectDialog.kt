@@ -17,7 +17,7 @@ class FileSelectDialog(private val files: Array<VirtualFile>) : DialogWrapper(tr
     init {
         title = "Opened Files Diff"
         init()
-        checkBoxList.setItems(files.toList(), VirtualFile::toString)
+        checkBoxList.setItems(files.toList(), VirtualFile::getPath)
         checkBoxList.setItemSelected(files[0], true)
     }
 
