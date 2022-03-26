@@ -11,7 +11,7 @@ Work at following conditions.
 - Case2 : Two split windows are opened.
   - Show differences between the files being displayed on each split windows.
 - Case3 : At least 3 split windows are opened.
-  - Select 2 files from the files being displayed on each split windows, then show differences of it.
+  - Select 2 files from the files being displayed on each split windows, then show differences of them.
 
 ---
 

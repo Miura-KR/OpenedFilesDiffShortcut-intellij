@@ -1,6 +1,5 @@
 <idea-plugin>
     <id>com.k.pmpstudy.OpenedFilesDiffShortcut</id>
-    <version>1.0.5</version>
     <name>Opened Files Diff Shortcut</name>
 
     <description><![CDATA[
@@ -16,7 +15,7 @@ Work at following conditions. <br>
 <ul><li>Show differences between the files being displayed on each split windows.</li></ul>
 </li>
 <li>Case3 : At least 3 split windows are opened.
-<ul><li>Select 2 files from the files being displayed on each split windows, then show differences of it.</li></ul>
+<ul><li>Select 2 files from the files being displayed on each split windows, then show differences of them.</li></ul>
 </li>
 </ul>
 
@@ -44,8 +43,10 @@ Work at following conditions. <br>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <change-notes><![CDATA[
-    fix file path representation
+    change IDE version compatible
     ]]></change-notes>
+
+    <idea-version since-build="191"/>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
