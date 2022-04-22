@@ -43,7 +43,8 @@ Work at following conditions. <br>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <change-notes><![CDATA[
-    change IDE version compatible
+    1.0.8<br>
+    Update until version to 221 idea.
     ]]></change-notes>
 
     <idea-version since-build="191"/>
