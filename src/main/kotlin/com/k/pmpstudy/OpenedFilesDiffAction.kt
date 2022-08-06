@@ -37,10 +37,11 @@ class OpenedFilesDiffAction : AnAction() {
             return
         }
 
-        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.toTypedArray()
-        if (selectedFileList.size != 2) {
+        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.distinct().toTypedArray()
+        if (selectedFileList.size > 2) {
             selectedFileList = FileSelectDialog(selectedFileList).showChoose2FilesDialog()
         }
+        if (selectedFileList.isEmpty()) return
         showDiffFirst2Files(e.project!!, selectedFileList)
     }
 
@@ -49,7 +50,12 @@ class OpenedFilesDiffAction : AnAction() {
                 || (windows.size == 1 && windows[0].files.size <= 1)
 
     private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
-        if (files.size <= 1) return
+        if (files.size <= 1) {
+            Messages.showMessageDialog(
+                "Please display 2 different files.", ACTION_ERROR_MESSAGE_TITLE, Messages.getInformationIcon()
+            )
+            return
+        }
         if (files[0] == files[1]) {
             Messages.showMessageDialog(
                 "Same files are opened", ACTION_ERROR_MESSAGE_TITLE, Messages.getInformationIcon()
