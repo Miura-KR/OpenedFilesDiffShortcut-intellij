@@ -1,11 +1,11 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
-    id 'org.jetbrains.intellij' version '1.8.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.22'
+    id 'org.jetbrains.intellij' version '1.10.0'
     id 'java'
 }
 
 group 'com.k.pmpstudy'
-version '1.0.9'
+version '1.0.10'
 
 repositories {
     mavenCentral()
@@ -13,13 +13,17 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2022.2'
+    version = '2022.3'
+}
+patchPluginXml {
+    sinceBuild = '223'
+    untilBuild = '223.*'
 }
 test {
     useJUnitPlatform()

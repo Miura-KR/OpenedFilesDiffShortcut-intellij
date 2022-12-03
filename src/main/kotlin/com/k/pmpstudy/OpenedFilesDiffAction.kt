@@ -5,6 +5,7 @@ import com.intellij.diff.DiffDialogHints
 import com.intellij.diff.DiffManager
 import com.intellij.diff.contents.DiffContent
 import com.intellij.diff.requests.SimpleDiffRequest
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx
@@ -24,7 +25,7 @@ class OpenedFilesDiffAction : AnAction() {
 
     override fun actionPerformed(@NotNull e: AnActionEvent) {
         val fileEditorManager: FileEditorManagerEx = FileEditorManagerEx.getInstanceEx(e.project!!)
-        val windows: Array<EditorWindow> = fileEditorManager.splitters.windows
+        val windows: Array<EditorWindow> = fileEditorManager.splitters.getWindows()
 
         if (isOpenedAtMost1File(windows)) {
             Messages.showMessageDialog(
@@ -37,7 +38,7 @@ class OpenedFilesDiffAction : AnAction() {
             return
         }
 
-        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile }.distinct().toTypedArray()
+        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile!! }.distinct().toTypedArray()
         if (selectedFileList.size > 2) {
             selectedFileList = FileSelectDialog(selectedFileList).showChoose2FilesDialog()
         }
@@ -74,4 +75,6 @@ class OpenedFilesDiffAction : AnAction() {
         )
         DiffManager.getInstance().showDiff(project, request, DiffDialogHints.MODAL)
     }
+
+    override fun getActionUpdateThread() = ActionUpdateThread.BGT
 }

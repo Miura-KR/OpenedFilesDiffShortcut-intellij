@@ -43,11 +43,9 @@ Work at following conditions. <br>
     <vendor url="https://github.com/Miura-KR/OpenedFilesDiffShortcut-intellij">OpenedFilesDiffShortcut</vendor>
 
     <change-notes><![CDATA[
-    1.0.9<br>
-    Update until version to 222 idea.
+    1.0.10<br>
+    Update until version to 223 idea.
     ]]></change-notes>
-
-    <idea-version since-build="191"/>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
