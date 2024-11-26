@@ -34,11 +34,11 @@ class OpenedFilesDiffAction : AnAction() {
             return
         }
         if (windows.size == 1) {
-            showDiffFirst2Files(e.project!!, windows[0].files)
+            showDiffFirst2Files(e.project!!, windows[0].fileList)
             return
         }
 
-        var selectedFileList: Array<VirtualFile> = windows.map { it.selectedFile!! }.distinct().toTypedArray()
+        var selectedFileList: List<VirtualFile> = windows.map { it.selectedFile!! }.distinct().toList()
         if (selectedFileList.size > 2) {
             selectedFileList = FileSelectDialog(selectedFileList).showChoose2FilesDialog()
         }
@@ -48,9 +48,9 @@ class OpenedFilesDiffAction : AnAction() {
 
     private fun isOpenedAtMost1File(windows: Array<EditorWindow>): Boolean =
         windows.isEmpty()
-                || (windows.size == 1 && windows[0].files.size <= 1)
+                || (windows.size == 1 && windows[0].fileList.size <= 1)
 
-    private fun showDiffFirst2Files(project: Project, files: Array<VirtualFile>) {
+    private fun showDiffFirst2Files(project: Project, files: List<VirtualFile>) {
         if (files.size <= 1) {
             Messages.showMessageDialog(
                 "Please display 2 different files.", ACTION_ERROR_MESSAGE_TITLE, Messages.getInformationIcon()

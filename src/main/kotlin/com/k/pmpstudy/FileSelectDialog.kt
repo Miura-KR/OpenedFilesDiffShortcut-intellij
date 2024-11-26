@@ -11,7 +11,7 @@ import javax.swing.JComponent
 import javax.swing.JLabel
 import javax.swing.JPanel
 
-class FileSelectDialog(private val files: Array<VirtualFile>) : DialogWrapper(true) {
+class FileSelectDialog(private val files: List<VirtualFile>) : DialogWrapper(true) {
     private val checkBoxList = CheckBoxList<VirtualFile>()
 
     init {
@@ -33,9 +33,9 @@ class FileSelectDialog(private val files: Array<VirtualFile>) : DialogWrapper(tr
         return dialogPanel
     }
 
-    fun showChoose2FilesDialog(): Array<VirtualFile> =
-        if (showAndGet()) files.filter { checkBoxList.isItemSelected(it) }.toTypedArray()
-        else emptyArray()
+    fun showChoose2FilesDialog(): List<VirtualFile> =
+        if (showAndGet()) files.filter { checkBoxList.isItemSelected(it) }.toList()
+        else emptyList()
 
     override fun doValidate(): ValidationInfo? =
         if (files.count { checkBoxList.isItemSelected(it) } == 2) null
